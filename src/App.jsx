@@ -15,11 +15,13 @@ function App() {
       <BrowserRouter>
         <Navigations />
         <Routes>
-          <Route>path="/Account"element={<Account />}</Route>
-          <Route>path="/" element={<Books />}</Route>
-          <Route>path="/Login"element={<Login />}</Route>
-          <Route>path="/Register"element={<Register />}</Route>
-          <Route>path="/SingleBook"element={<SingleBook />}</Route>
+          <Routes>
+            <Route path="/account" element={<Account />} />
+            <Route path="/" element={<Books />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/books/:id" element={<SingleBook />} />
+          </Routes>
         </Routes>
       </BrowserRouter>
 
