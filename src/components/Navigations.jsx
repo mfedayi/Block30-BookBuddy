@@ -11,16 +11,16 @@ export default function Navigations() {
               <Link className="nav-link" to="/">
                 Books
               </Link>
-              <Link className="nav-link" to="/Login">
+              <Link className="nav-link" to="/login">
                 Login
               </Link>
-              <Link className="nav-link" to="/Register">
+              <Link className="nav-link" to="/register">
                 Register
               </Link>
-              <Link className="nav-link" to="/SingleBook">
+              {/* <Link className="nav-link" to="/singleBook">
                 Single Book
-              </Link>
-              <Link className="nav-link" to="/Account">
+              </Link> */}
+              <Link className="nav-link" to="/account">
                 Account
               </Link>
 

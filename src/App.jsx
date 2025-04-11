@@ -15,13 +15,13 @@ function App() {
       <BrowserRouter>
         <Navigations />
         <Routes>
-          <Routes>
+          
             <Route path="/account" element={<Account />} />
             <Route path="/" element={<Books />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/books/:id" element={<SingleBook />} />
-          </Routes>
+          
         </Routes>
       </BrowserRouter>
 

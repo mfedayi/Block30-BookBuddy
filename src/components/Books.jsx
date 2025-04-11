@@ -1,5 +1,7 @@
 import { useGetBooksQuery } from "./bookSlice";
+import { useNavigate } from "react-router-dom";
 const Books = () => {
+  const navigate = useNavigate();
   const { books, isLoading, isError, error } = useGetBooksQuery();
 
   console.log("all listed books:", books);
@@ -14,9 +16,9 @@ const Books = () => {
       <h2>All the Books placeholder</h2>
       <ul className="books">
         {isLoading && <li>Loading books...</li>}
-        {books.map((book) => {
+        {books?.map((book) => {
           return (
-            <li key={book.id}>
+            <li key={book.id} onClick={() => navigate(`/books/${book.id}`)}>
               <h3>{book.title}</h3>
               <h3>{book.author}</h3>
               <p>{book.description}</p>
