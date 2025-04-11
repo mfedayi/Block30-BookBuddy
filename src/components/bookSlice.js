@@ -9,6 +9,7 @@ const booksAPI = api.injectEndpoints({
       }),
       providesTags: ["Books"],
     }),
+
     getBook: builder.query({
       query: (id) => ({
         url: `/books${id}`,
@@ -16,6 +17,7 @@ const booksAPI = api.injectEndpoints({
       }),
       providesTags: ["Books"],
     }),
+
     returnBook: builder.mutation({
       query: (id) => ({
         url: `/books${id}`,
@@ -23,6 +25,7 @@ const booksAPI = api.injectEndpoints({
       }),
       invalidatesTags: ["Books"],
     }),
+    
     checkOutBook: builder.mutation({
       query: (id) => ({
         url: `/books${id}`,

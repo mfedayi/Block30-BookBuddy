@@ -9,6 +9,7 @@ const usersAPI = api.injectEndpoints({
       }),
       providesTags: ["Users"],
     }),
+
     getLogin: builder.query({
       query: ({ email, password }) => ({
         url: `/login${id}`,
@@ -20,6 +21,7 @@ const usersAPI = api.injectEndpoints({
       }),
       invalidatesTags: ["Users"],
     }),
+    
     registerUser: builder.mutation({
       query: ({ firstName, lastName, email, password }) => ({
         url: `/register${id}`,

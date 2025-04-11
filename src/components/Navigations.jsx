@@ -20,8 +20,8 @@ export default function Navigations() {
               <Link className="nav-link" to="/SingleBook">
                 Single Book
               </Link>
-              <Link className="nav-link" to="/Accounts">
-                Accounts
+              <Link className="nav-link" to="/Account">
+                Account
               </Link>
 
               {/* CAN A LINK BE USED FOR THE SEARCH BAR....? <Link className="nav-link" to="/PuppyForm">

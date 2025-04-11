@@ -2,7 +2,6 @@ import { useState } from "react";
 import bookLogo from "./assets/books.png";
 import Navigations from "./components/Navigations";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.scss"
 
 function App() {
   const [token, setToken] = useState(null);
