@@ -1,10 +1,19 @@
+import "./components/bookSlice"; // force endpoint registration
 import { useState } from "react";
 import bookLogo from "./assets/books.png";
+import Books from "./components/Books";
+import SingleBook from "./components/SingleBook";
+import Login from "./components/Login";
 import Navigations from "./components/Navigations";
+import Register from "./components/Register";
+import Account from "./components/Account";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { useGetBooksQuery } from "./components/bookSlice";
 
 function App() {
   const [token, setToken] = useState(null);
+  // useGetBooksQuery(); //This will force the hook to be registered no matter what
 
   return (
     <>
@@ -15,11 +24,12 @@ function App() {
       <BrowserRouter>
         <Navigations />
         <Routes>
-          <Route>path="/Account"element={<Account />}</Route>
-          <Route>path="/" element={<Books />}</Route>
-          <Route>path="/Login"element={<Login />}</Route>
-          <Route>path="/Register"element={<Register />}</Route>
-          <Route>path="/SingleBook"element={<SingleBook />}</Route>
+          {/* <Route path="/" element={<Books />} /> */}
+          <Route path="/books" element={<Books />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/books/:id" element={<SingleBook />} />
         </Routes>
       </BrowserRouter>
 

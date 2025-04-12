@@ -1,3 +1,5 @@
+
+import "../components/bookSlice"; // just importing is enough to register it
 import { configureStore } from "@reduxjs/toolkit";
 import api from "./api";
 

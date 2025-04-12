@@ -1,5 +1,5 @@
 /* TODO - add your code to create a functional React component that renders a navigation bar for the different views in your single page application. You may consider conditionally rendering some options - for example 'Login' should be available if someone has not logged in yet. */
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function Navigations() {
   return (
@@ -11,16 +11,13 @@ export default function Navigations() {
               <Link className="nav-link" to="/">
                 Books
               </Link>
-              <Link className="nav-link" to="/Login">
+              <Link className="nav-link" to="/login">
                 Login
               </Link>
-              <Link className="nav-link" to="/Register">
+              <Link className="nav-link" to="/register">
                 Register
               </Link>
-              <Link className="nav-link" to="/SingleBook">
-                Single Book
-              </Link>
-              <Link className="nav-link" to="/Account">
+              <Link className="nav-link" to="/account">
                 Account
               </Link>
 

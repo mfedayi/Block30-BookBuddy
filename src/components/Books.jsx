@@ -1,44 +1,36 @@
 import { useGetBooksQuery } from "./bookSlice";
 import { useNavigate } from "react-router-dom";
+const Books = () => {
+  const navigate = useNavigate();
+  const { books, isLoading, isError, error } = useGetBooksQuery();
 
-
-export default function Books({ setSelectedPuppyId }) {
-    const { data: allBooks, error, status, isLoading } = useGetBooksQuery();
-    const navigate = useNavigate();
-    const viewBook = (id) => {
-      navigate(`/book/${id}`);
-    };
-    console.log(allBooks); // Take out later
-    if (isLoading) {
-      return <h1> Is loading </h1>;
-    }
-    if (error) {
-      return <h1>{error}</h1>;
-    }
-    return (
-    <>
+  console.log("all listed books:", books);
+  if (isLoading) {
+    return <h1>is loading...</h1>;
+  }
+  if (isError) {
+    return <h1>Error: {error?.status || "Unknown error"}</h1>;
+  }
+  return (
     <article>
-        <h2>Library Catalog</h2>
-            <ul>
-            {isLoading && <li>Loading books...</li>}
-              {allBooks.books.map((p) => (
-                <li key={p.id}>
-                  <h3>
-                    #{p.id} {p.title} by {p.author} 
-                  </h3>
-                  <figure>
-                    <img src={p.imageUrl} alt={p.name} />
-                  </figure>
-                  <button type = "button" onClick={() => navigate(`/books/${p.id}`)}>
-                    See details
-                  </button>
-                </li>
-                ))}
-            </ul> 
-          </article>
-    </>
-);
-}
+      <h2>All the Books placeholder</h2>
+      <ul className="books">
+        {isLoading && <li>Loading books...</li>}
+        {books?.map((book) => {
+          return (
+            <li key={book.id} onClick={() => navigate(`/books/${book.id}`)}>
+              <h3>{book.title}</h3>
+              <h4>{book.author}</h4>
+              <p>{book.description}</p>
+              <figure>
+                <img src={book.coverimage} alt={book.title} />
+              </figure>
+            </li>
+          );
+        })}
+      </ul>
+    </article>
+  );
+};
 
-
-
+export default Books;

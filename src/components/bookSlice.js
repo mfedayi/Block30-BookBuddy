@@ -1,4 +1,6 @@
 import api from "../store/api";
+console.log("bookSlice file executed");
+
 
 const booksAPI = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -25,7 +27,7 @@ const booksAPI = api.injectEndpoints({
       }),
       invalidatesTags: ["Books"],
     }),
-    
+
     checkOutBook: builder.mutation({
       query: (id) => ({
         url: `/books${id}`,
@@ -35,6 +37,10 @@ const booksAPI = api.injectEndpoints({
     }),
   }),
 });
+console.log("exports: ", booksAPI);
+console.log("hook:", booksAPI.useGetBooksQuery); // should NOT be undefined
+
+export default booksAPI;
 
 export const {
   useGetBooksQuery,
@@ -42,5 +48,3 @@ export const {
   useReturnBookMutation,
   useCheckOutBookMutation,
 } = booksAPI;
-
-

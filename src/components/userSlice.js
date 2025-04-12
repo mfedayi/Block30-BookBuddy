@@ -12,7 +12,7 @@ const usersAPI = api.injectEndpoints({
 
     getLogin: builder.query({
       query: ({ email, password }) => ({
-        url: `/login${id}`,
+        url: `/login`,
         method: "POST",
         body: {
           email,
@@ -21,10 +21,10 @@ const usersAPI = api.injectEndpoints({
       }),
       invalidatesTags: ["Users"],
     }),
-    
+
     registerUser: builder.mutation({
       query: ({ firstName, lastName, email, password }) => ({
-        url: `/register${id}`,
+        url: `/register`,
         method: "POST",
         body: {
           firstName,
@@ -39,5 +39,7 @@ const usersAPI = api.injectEndpoints({
 });
 
 export const {
-  useGetProfileQuery, useGetLoginMutation, useRegisterUserMutation
+  useGetProfileQuery,
+  useGetLoginMutation,
+  useRegisterUserMutation,
 } = usersAPI;
