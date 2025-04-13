@@ -1,9 +1,11 @@
 import { useGetBooksQuery } from "./bookSlice";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react"; //track user input into filter bar
 
 const Books = () => {
   const navigate = useNavigate();
   const { data, isLoading, isError, error } = useGetBooksQuery();
+  const [searchTerm, setSearchTerm] = useState(""); //state to track filtered books
 
   if (isLoading) {
     return <h1>is loading...</h1>;
@@ -13,11 +15,28 @@ const Books = () => {
     return <h1>Error: {error?.status || "Unknown error"}</h1>;
   }
 
+  const filteredBooks = data?.filter((book) => 
+    book.title.toLowerCase().includes(searchTerm.toLowerCase()) //filter books by title
+  );
+
   return (
     <article>
       <h2 className="book-titles">Library Catalog</h2>
+
+      {/*Create a search bar to filter books by title*/}
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Search books by title"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)} //update search term
+          className="search-input"
+        />
+      </div>
+
       <div className="books-grid">
-        {data?.map((book) => (
+        {filteredBooks.length > 0 ? (
+        filteredBooks.map((book) => (
             <div
               key={book.id} 
               className="book-card"
@@ -37,7 +56,10 @@ const Books = () => {
               <h3 className="book-title">{book.title}</h3>
               <p className="book-author">{book.author}</p>
             </div>
-        ))}
+         ))
+        ) : (
+          <h3> No books found matching your search</h3>
+        )}
       </div>
     </article>
   );
