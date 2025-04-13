@@ -19,7 +19,7 @@ function App() {
     <>
       <h1>
         <img id="logo-image" src={bookLogo} />
-        Library App
+        Book Buddy
       </h1>
       <BrowserRouter>
         <Navigations />
