@@ -34,7 +34,9 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-      <p>
+      
+    {/*
+     <p>
         Complete the React components needed to allow users to browse a library
         catalog, check out books, review their account, and return books that
         they've finished reading.
@@ -49,6 +51,7 @@ function App() {
         Don't forget to set up React Router to navigate between the different
         views of your single page application!
       </p>
+      */}
     </>
   );
 }

@@ -10,6 +10,20 @@ body {
   margin-right: 10px;
 }
 
+.search-bar {
+  text-align: center; /* Center the search bar */
+  margin: 2rem 0; /* Add margin to the search bar */
+}
+
+.search-input {
+  padding: 0.5rem; /* Add padding to the input */
+  font-size: 1rem; /* Set font size */
+  width: 50%; /* Set width to 50% */
+  border-radius: 4px; /* Round the corners of the input */
+  border: 1px solid #ccc; /* Add a border to the input */
+}
+
+
 .books-title {
   text-align: center; /* Center the title */
   margin: 2 rem 0; /* Add margin to the title */
