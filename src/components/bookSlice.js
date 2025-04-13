@@ -40,7 +40,7 @@ const booksAPI = api.injectEndpoints({
 console.log("exports: ", booksAPI);
 console.log("hook:", booksAPI.useGetBooksQuery); // should NOT be undefined
 
-export default booksAPI;
+// export default booksAPI;
 
 export const {
   useGetBooksQuery,
