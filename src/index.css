@@ -23,6 +23,10 @@ body {
   border: 1px solid #ccc; /* Add a border to the input */
 }
 
+.book-titles {
+  text-align: center; /* Center the book titles */
+  margin: 2rem 0; /* Add margin to the book titles */
+}
 
 .books-title {
   text-align: center; /* Center the title */
