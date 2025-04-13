@@ -1,9 +1,13 @@
 /* TODO - add your code to create a functional React component that renders a registration form */
 import { useState} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useRegisterUserMutation } from "./components/userSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function Register({ token, setToken }) {
-  const [username, setUsername] = useState("");
+  const registerUser = useRegisterUserMutation();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
@@ -29,7 +33,7 @@ export default function Register({ token, setToken }) {
     } catch (error) {
       console.error(error);
     }
-    navigate("/");
+    navigate("/account");
   }
 
   return (
@@ -49,21 +53,16 @@ export default function Register({ token, setToken }) {
           <label>
             Username:{" "}
             <input
-              type="username"
-              name="username"
-              value={username}
+              type="email"
+              name="email"
+              value={email}
               onChange={(e) => {
-                setUsername(e.target.value);
+                setEmail(e.target.value);
                 {
                   handleChange;
                 }
               }}
             />
-            {errors.username ? (
-              <p className="error">
-                Username should be at least 6 characters long
-              </p>
-            ) : null}
           </label>
           <label>
             Password:{" "}
