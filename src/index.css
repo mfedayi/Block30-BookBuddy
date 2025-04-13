@@ -10,4 +10,45 @@ body {
   margin-right: 10px;
 }
 
-/* Add your own custom styles here */
+.books-title {
+  text-align: center; /* Center the title */
+  margin: 2 rem 0; /* Add margin to the title */
+}
+
+.books-grid {
+  display: grid; /* Use CSS Grid for layout */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Create a responsive grid */
+  gap: 1.5rem; /* Add space between grid items */
+  padding: 1rem; /* Add padding to the grid */
+}
+
+.book-card {
+  border: 1px solid #ccc; /* Add a border to the book card */
+  border-radius: 8px; /* Round the corners of the card */
+  padding: 1rem; /* Add padding inside the card */
+  text-align: center; /* Center the text inside the card */
+  background-color: #fff; /* Set a white background for the card */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.book-card:hover {
+  transform: scale(1.05); /* Scale up the card on hover */
+  transition: transform 0.2s; /* Smooth transition for scaling */
+}
+
+.book-cover {
+  width: 100%; /* Make the cover image responsive */
+  height: 250px; /* Set a fixed height for the cover image */
+  object-fit: cover; /* Cover the entire area of the image */
+  border-radius: 4px; /* Round the corners of the image */
+}
+
+.book-title {
+  margin-top: 0.5rem; /* Add margin to the title */
+}
+
+.book-author {
+  color: #555; /* Set a gray color for the author */
+  font-size: 0.9rem; /* Set a smaller font size for the author */
+}
