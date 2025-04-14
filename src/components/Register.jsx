@@ -1,12 +1,11 @@
 /* TODO - add your code to create a functional React component that renders a registration form */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useRegisterUserMutation } from "./components/userSlice";
+import { useRegisterMutation } from "./userSlice";
 import { useNavigate } from "react-router-dom";
 
-export default function Register({ setToken }) {
-  const registerUser = useRegisterUserMutation();
-
+export default function Register() {
+  const [registerUser] = useRegisterMutation();
   // states to manage user inputs
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,13 +20,19 @@ export default function Register({ setToken }) {
   const navigate = useNavigate(); // hook to navigate
 
   //form validation function to validate user input for username and pass to meet min reqs
-  const validateValues = (email, password) => {
+  const validateValues = (email, password, firstname, lastname) => {
     const errors = {};
     if (!email || email.length < 6) {
       errors.email = "Username should be at least 6 characters long";
     }
     if (!password || password.length < 5) {
       errors.password = "password should be at least 5 characters long";
+    }
+    if (!firstname) {
+      errors.firstname = "field cannot be empty";
+    }
+    if (!lastname) {
+      errors.email = "field cannot be empty";
     }
     return errors;
   };
@@ -37,44 +42,28 @@ export default function Register({ setToken }) {
     event.preventDefault();
 
     // run vals and update state error
-    const validationErrors = validateValues(email, password);
+    const validationErrors = validateValues(email, password, firstname, lastname);
     setErrors(validationErrors);
 
-    if (Object.keys(validationErrors).length > 0) return;
+    if (Object.keys(validationErrors || {}).length > 0) return;
     setSubmitting(true); // set submitting flag to true
 
     // try to register user using RTK mutation
     try {
-      const result = registerUser({
+      const result = await registerUser({
         firstname,
         lastname,
         email,
         password,
       }).unwrap();
 
-      // save token in both app state and localStorage
-      setToken(result.token); // app state
-
-      localStorage.setItem("token", result.token); // local storage
+      
 
       // to prevent user logged out after refresh.
-      useEffect(() => {
-        const storedToken = localStorage.getItem("token");
-        if (storedToken) setToken(storedToken);
-      }, []);
+      
 
-      //***{ Runs every time token changes (because it's in the dependency array).
-
-      // If there's a valid token, it saves it into localStorage.
-
-      // So that anytime a user logs in or registers and receives a new token:
-      // It gets persisted across sessions.
-
-      // It can be loaded again later (by the first useEffect).}
-      useEffect(() => {
-        if (token) localStorage.setItem("token", token);
-      }, [token]); // due to dependency array it runs everytime token changes.
-
+      
+      
       setSuccessMessage(`Registration Successfull ${result.message}`); // set success message
       navigate("/"); // navigate user to home after successfull reg
     } catch (err) {
@@ -92,13 +81,13 @@ export default function Register({ setToken }) {
           {successMessage} Welcome {email}!
         </p>
       )}
-      {error.api && <p className="text-danger">{error.api}</p>}
+      {error && error.api && <p className="text-danger">{error.api}</p>}
 
       {/* Registration Form */}
-      <form method="POST" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label"></label>
-          email:{" "}
+          Email:{" "}
           <input
             type="email"
             className="form-control"
@@ -106,30 +95,78 @@ export default function Register({ setToken }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)} // Update email state on input change
           />
+          {error && error.email && (
+            <div className="text-danger">{error.email}</div>
+          )}
         </div>
-        <label>
-          Password:{" "}
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-              {
-                handleChange;
-              }
-            }}
-          />
-          {errors.password ? (
-            <p className="error">
-              Password should be at least 5 characters long
-            </p>
-          ) : null}
-        </label>
+        <div className="mb-3">
+          <label>
+            Password:{" "}
+            <input
+              type="password"
+              className="form-control"
+              name="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                // {
+                //   handleChange;
+                // }
+              }}
+            />
+            {error && error.password && (
+              <div className="text-danger">{error.password}</div>
+            )}
+          </label>
+        </div>
+        <div className="mb-3">
+          <label>
+            First Name:{" "}
+            <input
+              type="text"
+              className="form-control"
+              name="firstname"
+              value={firstname}
+              onChange={(e) => {
+                setFirstName(e.target.value);
+                // {
+                //   handleChange;
+                // }
+              }}
+            />
+            {error && error.firstname && (
+              <div className="text-danger">{error.firstname}</div>
+            )}
+          </label>
+        </div>
+        <div className="mb-3">
+          <label>
+            Last Name:{" "}
+            <input
+              type="text"
+              className="form-control"
+              name="lastname"
+              value={lastname}
+              onChange={(e) => {
+                setLastName(e.target.value);
+                // {
+                //   handleChange;
+                // }
+              }}
+            />
+            {error && error.lastname && (
+              <div className="text-danger">{error.lastname}</div>
+            )}
+          </label>
+        </div>
         <button type="submit" className="btn btn-outline-success">
           submit
         </button>
       </form>
+      {/* Show confirmation if no validation errors and form is being submitted */}
+      {error && Object.keys(error).length === 0 && submitting && (
+        <span className="text-success">Successfully submitted ✓</span>
+      )}
     </div>
   );
 }
