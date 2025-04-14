@@ -1,7 +1,7 @@
 /* TODO - add your code to create a functional React component that renders a registration form */
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useRegisterUserMutation } from "./components/userSlice";
+import { useRegisterUserMutation } from "../components/userSlice"; 
 import { useNavigate } from "react-router-dom";
 
 export default function Register({ setToken }) {
