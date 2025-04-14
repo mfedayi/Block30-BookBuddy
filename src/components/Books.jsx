@@ -4,7 +4,7 @@ import { useState } from "react"; //track user input into filter bar
 
 const Books = () => {
   const navigate = useNavigate();
-  const { data, isLoading, isError, error } = useGetBooksQuery();
+  const { data, isLoading, isError, error } = useGetBooksQuery(); //fetch all books
   const [searchTerm, setSearchTerm] = useState(""); //state to track filtered books
 
   if (isLoading) {
