@@ -16,6 +16,7 @@ const usersAPI = api.injectEndpoints({
       }),
       invalidatesTags: ["Users"],
     }),
+
     getProfile: builder.query({
       query: () => ({
         url: "/me",
@@ -24,7 +25,7 @@ const usersAPI = api.injectEndpoints({
       providesTags: ["Users"],
     }),
 
-    getLogin: builder.query({
+    getLogin: builder.mutation({
       query: ({ email, password }) => ({
         url: `/users/login`,
         method: "POST",
@@ -33,7 +34,7 @@ const usersAPI = api.injectEndpoints({
           password,
         },
       }),
-      invalidatesTags: ["Users"],
+       providesTags: ["Users"],
     }),
   }),
 });
