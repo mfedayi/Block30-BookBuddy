@@ -22,16 +22,19 @@ const booksAPI = api.injectEndpoints({
 
     returnBook: builder.mutation({
       query: (id) => ({
-        url: `/books/${id}`,
-        method: "POST",
+        url: `/reservations/${id}`,
+        method: "DELETE",
       }),
       invalidatesTags: ["Books"],
     }),
 
     checkOutBook: builder.mutation({
       query: (id) => ({
-        url: `/books/${id}`,
-        method: "DELETE",
+        url: `/reservations`,
+        method: "POST",
+        body: {
+          bookId: id,
+        }
       }),
       invalidatesTags: ["Books"],
     }),

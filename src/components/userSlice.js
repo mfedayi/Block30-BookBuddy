@@ -35,7 +35,7 @@ const usersAPI = api.injectEndpoints({
         },
       }),
        providesTags: ["Users"],
-    }),
+   }),
   }),
 });
 const storeToken = (state, { payload }) => {
