@@ -70,3 +70,28 @@ body {
   color: #555; /* Set a gray color for the author */
   font-size: 0.9rem; /* Set a smaller font size for the author */
 }
+.signInContainer {
+  display: block;
+  border: solid black 1px;
+  background-color: rgba(238, 238, 238, 0.793);
+  border-radius: 10%;
+  padding: 20px;
+  text-align: left;
+  width: 300px;
+  justify-self: anchor-center !important;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.form-control {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.signIn {
+  justify-self: center;
+  padding-bottom: 10px;
+}
+
+button {
+  margin-top: 10px;
+}
