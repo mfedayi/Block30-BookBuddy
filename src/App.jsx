@@ -1,5 +1,5 @@
 import "./components/bookSlice"; // force endpoint registration
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import bookLogo from "./assets/books.png";
 import Books from "./components/Books";
 import SingleBook from "./components/SingleBook";
@@ -13,7 +13,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [token, setToken] = useState(null);
-  //useGetBooksQuery(); //This will force the hook to be registered no matter what
+  // Load token fomr the localStorage on mount
+  useEffect(() => {
+    const savedToken = localStorage.getItem("token");
+    if (savedToken) {
+      setToken(savedToken);
+    }
+  }, []);
 
   return (
     <>

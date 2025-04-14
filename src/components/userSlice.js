@@ -38,10 +38,6 @@ const usersAPI = api.injectEndpoints({
   }),
 });
 
-const storeToken = (state, {payload}) => {
-  localStorage.setItem("token", payload.token);
-};
-
 export const {
   useGetProfileQuery,
   useGetLoginMutation,
