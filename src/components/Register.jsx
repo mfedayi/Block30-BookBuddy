@@ -2,6 +2,7 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useRegisterMutation } from "./userSlice";
+
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {

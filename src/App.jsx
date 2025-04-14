@@ -17,7 +17,7 @@ function App() {
     <>
       <h1>
         <img id="logo-image" src={bookLogo} />
-        Library App
+        Book Buddy
       </h1>
       <BrowserRouter>
         <Navigations />
@@ -31,6 +31,10 @@ function App() {
           <Route path="*" element={<div>404 - Page Not Found</div>} />
         </Routes>
       </BrowserRouter>
+
+
+      
+    
     </>
   );
 }
