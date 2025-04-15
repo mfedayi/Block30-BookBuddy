@@ -19,7 +19,15 @@ const usersAPI = api.injectEndpoints({
 
     getProfile: builder.query({
       query: () => ({
-        url: "/me",
+        url: "users/me",
+        method: "GET",
+      }),
+      providesTags: ["Users"],
+    }),
+
+    getReservations: builder.query({
+      query: () => ({
+        url: "/reservations",
         method: "GET",
       }),
       providesTags: ["Users"],
@@ -34,8 +42,8 @@ const usersAPI = api.injectEndpoints({
           password,
         },
       }),
-       providesTags: ["Users"],
-   }),
+      providesTags: ["Users"],
+    }),
   }),
 });
 const storeToken = (state, { payload }) => {
@@ -52,5 +60,5 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const { useRegisterMutation, useGetProfileQuery, useGetLoginMutation } =
+export const { useRegisterMutation, useGetProfileQuery, useGetLoginMutation, useGetReservationsQuery } =
   usersAPI;

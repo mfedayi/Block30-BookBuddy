@@ -1,10 +1,26 @@
 import { useParams } from "react-router-dom";
-import { useGetBookQuery, useCheckOutBookMutation } from "./bookSlice";
+import {
+  useGetBookQuery,
+  useCheckOutBookMutation,
+  useReturnBookMutation,
+} from "./bookSlice";
+import { useGetReservationsQuery } from "./userSlice";
+
+import { useState, useEffect } from "react";
 
 const SingleBook = () => {
   const { id } = useParams(); //get the book id from the URL
-  const {data: book, isLoading, isError, error} = useGetBookQuery(id); //fetch the book data using the id
+  const { data: book, isLoading, isError, error } = useGetBookQuery(id); //fetch the book data using the id
   const [checkOutBook] = useCheckOutBookMutation();
+  const [returnBook] = useReturnBookMutation();
+  const { data: reservations, status } = useGetReservationsQuery();
+  // const [reservationList, setReservationList] = useState([]);
+
+  //   useEffect(() => {
+  //     if (status === "fulfilled") {
+  //       setReservationList(reservations);
+  //     }
+  //   }, [status]);
 
   if (isLoading) {
     return <h1> Loading... </h1>;
@@ -19,19 +35,32 @@ const SingleBook = () => {
   }
 
   const handleBookClick = async (id) => {
-    try { const response = await checkOutBook(id).unwrap(); 
-        
-    } catch (error) {
-        
-    }
-  }
+    try {
+      const response = await checkOutBook(id).unwrap();
+      localStorage.setItem("resID", response.id);
+    } catch (error) {}
+  };
+
+  const handleBookReturn = async (bookID) => {
+    try {
+      console.log("book ID: ", bookID);
+      console.log("reservations", reservations);
+      let resID = reservations.find((e) => e.bookid == bookID).id;
+
+      const returnResponse = await returnBook(resID).unwrap();
+    } catch (error) {}
+  };
 
   return (
     <article className="single-book">
       {" "}
       {/* Display the book details */}
-      <h2><strong>{book.title}</strong></h2>
-      <h3><strong>{book.author}</strong></h3>
+      <h2>
+        <strong>{book.title}</strong>
+      </h2>
+      <h3>
+        <strong>{book.author}</strong>
+      </h3>
       <img
         src={
           book.coverimage && book.coverimage.startsWith("http") // check if the cover image URL is valid
@@ -46,9 +75,12 @@ const SingleBook = () => {
         <strong>Available:</strong> {book.available ? "Yes" : "No"}
       </p>
       {book.available ? (
-        <button onClick={ () => handleBookClick(id)}>Check Out</button>
+        <button onClick={() => handleBookClick(id)}>Check Out</button>
       ) : (
-        "Book is already checkedout"
+        <>
+          <p>"Book is already checkedout"</p>
+          <button onClick={() => handleBookReturn(id)}>Return Book</button>
+        </>
       )}
     </article>
   );
