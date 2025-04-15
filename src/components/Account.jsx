@@ -1,10 +1,28 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useGetProfileQuery } from "./userSlice";
-import { useState } from "react";
+import { useGetProfileQuery, useGetReservationsQuery } from "./userSlice";
+import { useReturnBookMutation } from "./bookSlice";
+import { useState, useEffect } from "react";
 
 const Account = () => {
   const { data: profile, error, isLoading } = useGetProfileQuery();
+  const { status, data: reservationList } = useGetReservationsQuery();
+  const [ reservations, setReservations ] = useState([]);
+  const [ returnBook ] = useReturnBookMutation();
+  console.log(reservationList)
 
+  useEffect(() => {
+    if(status.toLowerCase() === "fulfilled") {
+        setReservations(reservationList);
+    }
+  }, [status]); 
+
+  const handleCheckInBook = async (id) => {
+    try {
+      await returnBook(id).unwrap();
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   if (isLoading) {
     return <p>is loading...</p>;
@@ -50,8 +68,8 @@ const Account = () => {
                     <div className="mainAccountContainer">
                   <h4 className="font-weight-bold mt-0 mb-4">My Books</h4>
 
-                    {profile.reservations?.length < 1 ? <p>No reserved books</p> 
-                    : profile.reservations.map(reservation => {
+                    {reservations?.length < 1 ? <p>No reserved books</p> 
+                    : reservations.map(reservation => {
                         return (
                             <div className="bg-white card mb-4 order-list shadow-sm">
                             <div className="gold-members p-4">
@@ -60,6 +78,7 @@ const Account = () => {
                                 <a href="#">
                                   <img className="mr-4" src={reservation.coverimage}></img>
                                 </a>
+                                <button onClick={() => handleCheckInBook(reservation?.id)}>Return this book</button>
                                 <div className="media-body">
                                   <h6 className="mb-2">
                                     <a href="#"></a>

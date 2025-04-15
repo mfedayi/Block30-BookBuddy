@@ -30,7 +30,7 @@ const usersAPI = api.injectEndpoints({
         url: "/reservations",
         method: "GET",
       }),
-      providesTags: ["Users"],
+      providesTags: ["Res"],
     }),
 
     getLogin: builder.mutation({

@@ -14,13 +14,6 @@ const SingleBook = () => {
   const [checkOutBook] = useCheckOutBookMutation();
   const [returnBook] = useReturnBookMutation();
   const { data: reservations, status } = useGetReservationsQuery();
-  // const [reservationList, setReservationList] = useState([]);
-
-  //   useEffect(() => {
-  //     if (status === "fulfilled") {
-  //       setReservationList(reservations);
-  //     }
-  //   }, [status]);
 
   if (isLoading) {
     return <h1> Loading... </h1>;
