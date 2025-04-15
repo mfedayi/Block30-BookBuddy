@@ -5,14 +5,33 @@ body {
   padding: 0;
 }
 
+.app-header {
+  text-align: center; /* Center the header text */
+  margin-top: 2rem; /* Add margin to the top */
+}
+
+.app-title {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  font-size: 2.5rem; /* Set font size */
+  font-weight: bold; /* Set font weight */
+  color: #333; /* Set text color */
+}
+
 #logo-image {
   width: 30px;
+  height: auto; /* Set the logo image size */
   margin-right: 10px;
 }
 
+.nav-link.active {
+  font-weight: bold; /* Make the active link bold */
+  border-bottom: 2px solid navy; /* Add a bottom border to the active link */
+}
+
 .search-bar {
-  text-align: center; /* Center the search bar */
-  margin: 2rem 0; /* Add margin to the search bar */
+  margin: 1rem 1rem; /* Add margin to the search bar */
 }
 
 .search-input {
@@ -24,8 +43,12 @@ body {
 }
 
 .book-titles {
-  text-align: center; /* Center the book titles */
-  margin: 2rem 0; /* Add margin to the book titles */
+  margin: 3rem 1rem; /* Add margin to the book titles */
+  margin-bottom: 1rem; /* Add margin to the bottom */
+  font-family: "Georgia", serif; /* Set font family */
+  font-size: 1.5rem; /* Set font size */
+  font-weight: 600; /* Set font weight */
+  color: #333; /* Set text color */
 }
 
 .books-title {
@@ -95,3 +118,39 @@ body {
 button {
   margin-top: 10px;
 }
+
+.single-book { 
+  max-width: 600px; /* Set a max width for the book details */
+  margin: 1rem auto; /* Center the book details */
+  padding: 1rem; /* Add padding */
+  background-color: papayawhip; /* Set a white background */
+  border-radius: 8px; /* Round the corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  text-align: center; /* Center the text */
+  border: #555 solid 1px; /* Add a border */
+}
+
+.single-book h2 {
+  font-size: 2rem; /* Set a larger font size for the title */
+  margin-bottom: 1rem; /* Add margin below the title */
+}
+
+.single-book h3 {
+  font-size: 1.5rem; /* Set a larger font size for the author */
+  color: gray; /* Set a gray color for the author */
+  margin-bottom: 1rem; /* Add margin below the author */
+}
+
+.books-cover {
+  width: 200px; /* Make the cover image responsive */
+  height: auto; /* Set a fixed height for the cover image */
+  border-radius: 4px; /* Round the corners of the image */
+  margin-bottom: 1rem; /* Add margin below the image */
+}
+
+.single-book p {
+  font-size: 1rem; /* Set a font size for the description */
+  line-height: 1.5; /* Set line height for readability */
+  margin-bottom: 1rem; /* Add margin below the description */
+}
+
