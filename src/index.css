@@ -1,6 +1,9 @@
 body {
-  font-family: Georgia, serif;
-  background-color: #f8f8f8;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5));
+  background-image: 
+    url("https://cdn.promptalot.com/prompts/images/quadrants/1693196291_It0RIMXhjA_u3.jpg"),
+    url("https://wallpapers.com/background/black-solid-background-2560-x-1600-db48y1vipwl38mh1.html");
   margin: 0;
   padding: 0;
 }
@@ -14,6 +17,7 @@ body {
   display: flex; /* Use flexbox for layout */
   align-items: center; /* Center items vertically */
   justify-content: center; /* Center items horizontally */
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 2.5rem; /* Set font size */
   font-weight: bold; /* Set font weight */
   color: #333; /* Set text color */
@@ -27,6 +31,7 @@ body {
 
 .nav-link.active {
   font-weight: bold; /* Make the active link bold */
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   border-bottom: 2px solid navy; /* Add a bottom border to the active link */
 }
 
@@ -36,16 +41,17 @@ body {
 
 .search-input {
   padding: 0.5rem; /* Add padding to the input */
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 1rem; /* Set font size */
   width: 50%; /* Set width to 50% */
   border-radius: 4px; /* Round the corners of the input */
-  border: 1px solid #ccc; /* Add a border to the input */
+  border: 1px solid rgba(238, 238, 238, 0.793); /* Add a border to the input */
 }
 
 .book-titles {
   margin: 3rem 1rem; /* Add margin to the book titles */
   margin-bottom: 1rem; /* Add margin to the bottom */
-  font-family: "Georgia", serif; /* Set font family */
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* Set font family */
   font-size: 1.5rem; /* Set font size */
   font-weight: 600; /* Set font weight */
   color: #333; /* Set text color */
@@ -53,6 +59,7 @@ body {
 
 .books-title {
   text-align: center; /* Center the title */
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin: 2 rem 0; /* Add margin to the title */
 }
 
@@ -68,7 +75,7 @@ body {
   border-radius: 8px; /* Round the corners of the card */
   padding: 1rem; /* Add padding inside the card */
   text-align: center; /* Center the text inside the card */
-  background-color: #fff; /* Set a white background for the card */
+  background-color: rgba(238, 238, 238, 0.793); /* Set a white background for the card */
   cursor: pointer; /* Change cursor to pointer on hover */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
@@ -87,10 +94,12 @@ body {
 
 .book-title {
   margin-top: 0.5rem; /* Add margin to the title */
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .book-author {
   color: #555; /* Set a gray color for the author */
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 0.9rem; /* Set a smaller font size for the author */
 }
 .signInContainer {
@@ -117,25 +126,29 @@ body {
 
 button {
   margin-top: 10px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .single-book { 
   max-width: 600px; /* Set a max width for the book details */
   margin: 1rem auto; /* Center the book details */
-  padding: 1rem; /* Add padding */
-  background-color: papayawhip; /* Set a white background */
+  margin-top: 50px;
+  padding: 50px; /* Add padding */
+  background-color: rgba(238, 238, 238, 0.793); /* Set a white background */
   border-radius: 8px; /* Round the corners */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center; /* Center the text */
-  border: #555 solid 1px; /* Add a border */
 }
 
 .single-book h2 {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 2rem; /* Set a larger font size for the title */
   margin-bottom: 1rem; /* Add margin below the title */
 }
 
 .single-book h3 {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 1.5rem; /* Set a larger font size for the author */
   color: gray; /* Set a gray color for the author */
   margin-bottom: 1rem; /* Add margin below the author */
@@ -149,8 +162,46 @@ button {
 }
 
 .single-book p {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 1rem; /* Set a font size for the description */
   line-height: 1.5; /* Set line height for readability */
   margin-bottom: 1rem; /* Add margin below the description */
 }
 
+.signInContainer {
+  margin-top: 45px !important;
+  display: block;
+  background-color: rgba(250, 244, 231, 0.793);
+  border-radius: 10%;
+  padding: 20px;
+  text-align: left;
+  width: 300px;
+  justify-self: anchor-center !important;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.form-control {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.signIn {
+  justify-self: center;
+  padding-bottom: 10px;
+}
+
+button {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+label {
+  padding-left: 5px;
+}
+
+.bg-light {
+  --bs-bg-opacity: 0 !important;
+  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+}
