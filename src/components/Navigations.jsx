@@ -12,6 +12,7 @@ export default function Navigations({ token, setToken }) {
     setToken(null); // Clear the token
     localStorage.removeItem("token"); // Remove the token from local storage
   }
+  console.log(localStorage.getItem("token"))
 
   return (
       <nav className="navbar bg-light justify-content-center">
@@ -22,7 +23,7 @@ export default function Navigations({ token, setToken }) {
               </Link>
           </li>
               
-        {!token && (
+        {!localStorage.getItem("token") && (
           <>
             <li className="nav-item">
               <Link className={`nav-link ${isActive("/login") ? "active text-primary" : "text-dark"}`}
@@ -39,7 +40,7 @@ export default function Navigations({ token, setToken }) {
           </>
         )}
 
-        {token && (
+        {localStorage.getItem("token") && (
           <>
             <li className="nav-item">
               <Link className={`nav-link ${isActive("/account") ? "active text-primary" : "text-dark"}`}
