@@ -19,7 +19,7 @@ const usersAPI = api.injectEndpoints({
 
     getProfile: builder.query({
       query: () => ({
-        url: "users/me",
+        url: "/users/me",
         method: "GET",
       }),
       providesTags: ["Users"],
@@ -31,6 +31,14 @@ const usersAPI = api.injectEndpoints({
         method: "GET",
       }),
       providesTags: ["Users"],
+    }),
+
+    getReservations: builder.query({
+      query: () => ({
+        url: "/reservations",
+        method: "GET",
+      }),
+      providesTags: ["Res"],
     }),
 
     getLogin: builder.mutation({

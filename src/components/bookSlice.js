@@ -25,7 +25,7 @@ const booksAPI = api.injectEndpoints({
         url: `/reservations/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Books"],
+      invalidatesTags: ["Books", "Res"],
     }),
 
     checkOutBook: builder.mutation({
@@ -36,7 +36,7 @@ const booksAPI = api.injectEndpoints({
           bookId: id,
         }
       }),
-      invalidatesTags: ["Books"],
+      invalidatesTags: ["Books", "Res"],
     }),
   }),
 });
