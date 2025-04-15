@@ -30,8 +30,8 @@ const SingleBook = () => {
     <article className="single-book">
       {" "}
       {/* Display the book details */}
-      <h2>{book.title}</h2>
-      <h3>{book.author}</h3>
+      <h2><strong>{book.title}</strong></h2>
+      <h3><strong>{book.author}</strong></h3>
       <img
         src={
           book.coverimage && book.coverimage.startsWith("http") // check if the cover image URL is valid
@@ -39,7 +39,7 @@ const SingleBook = () => {
             : "https://placehold.co/150x250?text=No+Cover"
         }
         alt={book.title}
-        className="book-cover"
+        className="books-cover"
       />
       <p> {book.description}</p>
       <p>

@@ -12,15 +12,21 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import { useGetBooksQuery } from "./components/bookSlice";
 
 function App() {
+  const [token, setToken] = useState(() => {
+    return localStorage.getItem("token")// retrieve token from local storage
+  }); 
 
   return (
     <>
-      <h1>
+      <header className="app-header">
+      <h1 className="app-title">
         <img id="logo-image" src={bookLogo} />
         Book Buddy
       </h1>
+      </header>
+
       <BrowserRouter>
-        <Navigations />
+        <Navigations token={token} setToken={setToken} />
         <Routes>
           <Route path="/" element={<Books />} />
           <Route path="/books" element={<Books />} />
@@ -31,10 +37,6 @@ function App() {
           <Route path="*" element={<div>404 - Page Not Found</div>} />
         </Routes>
       </BrowserRouter>
-
-
-      
-    
     </>
   );
 }
