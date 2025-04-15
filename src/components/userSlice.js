@@ -30,6 +30,14 @@ const usersAPI = api.injectEndpoints({
         url: "/reservations",
         method: "GET",
       }),
+      providesTags: ["Users"],
+    }),
+
+    getReservations: builder.query({
+      query: () => ({
+        url: "/reservations",
+        method: "GET",
+      }),
       providesTags: ["Res"],
     }),
 
