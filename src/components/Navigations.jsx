@@ -12,7 +12,7 @@ export default function Navigations({ token, setToken }) {
     setToken(null); // Clear the token
     localStorage.removeItem("token"); // Remove the token from local storage
   }
-  console.log(localStorage.getItem("token"))
+  //console.log(localStorage.getItem("token"))
 
   return (
       <nav className="navbar bg-light justify-content-center">
