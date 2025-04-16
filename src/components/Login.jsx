@@ -1,5 +1,4 @@
-// add import Login from "...." to App.jsx and put within app ( <Login /> )
-import "bootstrap/dist/css/bootstrap.min.css"; // <--- is this redundant?
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGetLoginMutation } from "./userSlice";
@@ -43,55 +42,43 @@ export default function Login() {
       setSuccessMessage(`Sign in Successfull ${result.message}`); // set success message
       navigate("/"); // navigate user to home after successfull reg
     } catch (err) {
-      
       console.error("Failed to login", err);
       setErrors({ api: "login failed" });
     }
-  }  
-//   const submit = (e) => {
-//     e.preventDefault();
-//     const obj = {
-//       user,
-//       password,
-//     };
-//     console.log(obj);
-//   };
+  }
   return (
     <div className="signInContainer">
       <h4 className="signIn">Please sign in</h4>
       {successMessage && (
-        <p className="text-success">
-          {successMessage} Welcome!
-        </p>
+        <p className="text-success">{successMessage} Welcome!</p>
       )}
       {error && error.api && <p className="text-danger">{error.api}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label className="fw-light">Email address</label>
-          <input
-            type="email"
-            value={email}
-            className="form-control"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <label className="fw-light">Email</label>
+            <input
+              type="email"
+              value={email}
+              className="form-control"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
         </div>
         <div className="form-group">
           <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            className="form-control"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+            <input
+              type="password"
+              value={password}
+              className="form-control"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
         </div>
-        <button type="submit" className="btn btn-secondary">
+        <button type="submit" className="btn btn-outline-dark">
           Submit
         </button>
       </form>
     </div>
   );
 }
-

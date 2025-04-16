@@ -1,4 +1,3 @@
-/* TODO - add your code to create a functional React component that renders a navigation bar for the different views in your single page application. You may consider conditionally rendering some options - for example 'Login' should be available if someone has not logged in yet. */
 import { Link, useLocation } from "react-router-dom"
 
 export default function Navigations({ token, setToken }) {
@@ -12,7 +11,6 @@ export default function Navigations({ token, setToken }) {
     setToken(null); // Clear the token
     localStorage.removeItem("token"); // Remove the token from local storage
   }
-  //console.log(localStorage.getItem("token"))
 
   return (
       <nav className="navbar bg-light justify-content-center">

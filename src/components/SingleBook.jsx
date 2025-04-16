@@ -6,8 +6,6 @@ import {
 } from "./bookSlice";
 import { useGetReservationsQuery } from "./userSlice";
 
-import { useState, useEffect } from "react";
-
 const SingleBook = () => {
   const { id } = useParams(); //get the book id from the URL
   const { data: book, isLoading, isError, error } = useGetBookQuery(id); //fetch the book data using the id
@@ -36,8 +34,6 @@ const SingleBook = () => {
 
   const handleBookReturn = async (bookID) => {
     try {
-      console.log("book ID: ", bookID);
-      console.log("reservations", reservations);
       let resID = reservations.find((e) => e.bookid == bookID).id;
 
       const returnResponse = await returnBook(resID).unwrap();
@@ -68,15 +64,14 @@ const SingleBook = () => {
         <strong>Available:</strong> {book.available ? "Yes" : "No"}
       </p>
       {book.available ? (
-        <button onClick={() => handleBookClick(id)}>Check Out</button>
+        <button className="btn btn-outline-dark" onClick={() => handleBookClick(id)}>Check Out</button>
       ) : (
         <>
-          <p>"Book is already checkedout"</p>
-          <button onClick={() => handleBookReturn(id)}>Return Book</button>
+          <p>"This book is already checked out"</p>
+          <button className="btn btn-outline-dark" onClick={() => handleBookReturn(id)}>Return Book</button>
         </>
       )}
     </article>
   );
 };
-
 export default SingleBook;

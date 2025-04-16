@@ -8,7 +8,6 @@ const Account = () => {
   const { status, data: reservationList } = useGetReservationsQuery();
   const [ reservations, setReservations ] = useState([]);
   const [ returnBook ] = useReturnBookMutation();
-  console.log(reservationList)
 
   useEffect(() => {
     if(status.toLowerCase() === "fulfilled") {
@@ -47,9 +46,6 @@ const Account = () => {
                       alt="profile picture"
                     ></img>
                     <div className="osahan-user-media-body">
-                      <h6 className="mb-2">
-                        {profile?.firstname} {profile?.lastname}
-                      </h6>
                       <p className="mb-1">{profile?.email}</p>
                     </div>
                   </div>
@@ -78,7 +74,8 @@ const Account = () => {
                                 <a href="#">
                                   <img className="mr-4" src={reservation.coverimage}></img>
                                 </a>
-                                <button onClick={() => handleCheckInBook(reservation?.id)}>Return this book</button>
+                                <br></br>
+                                <button onClick={() => handleCheckInBook(reservation?.id)} className="btn btn-outline-dark">Return this book</button>
                                 <div className="media-body">
                                   <h6 className="mb-2">
                                     <a href="#"></a>
@@ -93,12 +90,9 @@ const Account = () => {
                         )
                     })
                   }
-
-
-
+                 </div>
                 </div>
-            </div>
-            </div>
+              </div>
             </div>
           </div>
         </div>
@@ -107,4 +101,3 @@ const Account = () => {
   );
 };
 export default Account;
-

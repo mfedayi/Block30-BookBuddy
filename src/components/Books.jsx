@@ -21,18 +21,16 @@ const Books = () => {
 
   return (
     <article>
-      <h2 className="book-titles">Library Catalog</h2>
-
-      {/*Create a search bar to filter books by title*/}
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Search books by title"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)} //update search term
-          className="search-input"
-        />
-      </div>
+      <h2 className="book-titles">Our Library Catalog</h2>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search books by title"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)} //update search term
+            className="search-input"
+           />
+        </div>
 
       <div className="books-grid">
         {filteredBooks.length > 0 ? (
@@ -64,5 +62,4 @@ const Books = () => {
     </article>
   );
 };
-
 export default Books;

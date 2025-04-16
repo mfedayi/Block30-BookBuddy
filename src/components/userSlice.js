@@ -1,7 +1,7 @@
 import api from "../store/api";
 import { createSlice } from "@reduxjs/toolkit";
 
-const usersAPI = api.injectEndpoints({
+const usersAPI = api.injectEndpoints({ 
   endpoints: (builder) => ({
     register: builder.mutation({
       query: ({ firstName, lastName, email, password }) => ({

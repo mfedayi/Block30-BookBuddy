@@ -9,8 +9,6 @@ import Register from "./components/Register";
 import Account from "./components/Account";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-//import { useGetBooksQuery } from "./components/bookSlice";
-
 function App() {
   const [token, setToken] = useState(() => {
     return localStorage.getItem("token")// retrieve token from local storage
