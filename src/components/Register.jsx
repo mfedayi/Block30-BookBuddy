@@ -1,4 +1,3 @@
-/* TODO - add your code to create a functional React component that renders a registration form */
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useRegisterMutation } from "./userSlice";
@@ -58,13 +57,6 @@ export default function Register() {
         password,
       }).unwrap();
 
-      
-
-      // to prevent user logged out after refresh.
-      
-
-      
-      
       setSuccessMessage(`Registration Successfull ${result.message}`); // set success message
       navigate("/"); // navigate user to home after successfull reg
     } catch (err) {
@@ -74,7 +66,7 @@ export default function Register() {
   }
 
   return (
-    <div className="container">
+    <div className="registerBackground">
       <h2>Register</h2>
       {/* Success and API error messages */}
       {successMessage && (
@@ -84,6 +76,7 @@ export default function Register() {
       )}
       {error && error.api && <p className="text-danger">{error.api}</p>}
 
+      <div className="registerContainer">
       {/* Registration Form */}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -110,9 +103,6 @@ export default function Register() {
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
-                // {
-                //   handleChange;
-                // }
               }}
             />
             {error && error.password && (
@@ -130,9 +120,6 @@ export default function Register() {
               value={firstname}
               onChange={(e) => {
                 setFirstName(e.target.value);
-                // {
-                //   handleChange;
-                // }
               }}
             />
             {error && error.firstname && (
@@ -150,9 +137,6 @@ export default function Register() {
               value={lastname}
               onChange={(e) => {
                 setLastName(e.target.value);
-                // {
-                //   handleChange;
-                // }
               }}
             />
             {error && error.lastname && (
@@ -160,10 +144,11 @@ export default function Register() {
             )}
           </label>
         </div>
-        <button type="submit" className="btn btn-outline-success">
+        <button type="submit" className="btn btn-outline-dark">
           submit
         </button>
       </form>
+      </div>
       {/* Show confirmation if no validation errors and form is being submitted */}
       {error && Object.keys(error).length === 0 && submitting && (
         <span className="text-success">Successfully submitted ✓</span>
